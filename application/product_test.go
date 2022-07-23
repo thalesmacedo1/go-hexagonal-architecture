@@ -16,3 +16,13 @@ func TestProduct_Enable(t *testing.T) {
 	err := product.Enable()
 	require.Nil(t, err)
 }
+
+func TestProduct_Disable(t *testing.T) {
+	product := application.Product{}
+	product.Name = "Hello"
+	product.Status = application.ENABLED
+	product.Price = 0
+
+	err := product.Disable()
+	require.Nil(t, err)
+}
