@@ -11,7 +11,7 @@ func init() {
 	govalidator.SetFieldsRequiredByDefault(true)
 }
 
-type ProductInterface interface {
+type ProductI interface {
 	IsValid() (bool, error)
 	Enable() error
 	Disable() error
@@ -19,6 +19,25 @@ type ProductInterface interface {
 	GetName() string
 	GetStatus() string
 	GetPrice() float64
+}
+
+type ProductServiceI interface {
+	Get(id string) (ProductI, error)
+	Create(name string, price float64) (ProductI, error)
+	Enable(product ProductI) (ProductI, error)
+	Disable(product ProductI) (ProductI, error)
+}
+
+type ProductReader interface {
+	Get(id string) (ProductI, error)
+}
+type ProductWriter interface {
+	Save(product ProductI) (ProductI, error)
+}
+
+type ProductPersistenceI interface {
+	ProductReader
+	ProductWriter
 }
 
 const (
