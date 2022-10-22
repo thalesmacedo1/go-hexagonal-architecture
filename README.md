@@ -1,1 +1,1 @@
-![alt text](images/go-hexagonal-architecture.png)
+![alt text](.github/images/go-hexagonal-architecture.png)
